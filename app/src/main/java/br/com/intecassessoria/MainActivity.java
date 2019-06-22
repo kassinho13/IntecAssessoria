@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                 request.addRequestHeader("User-Agent", userAgent);
 
 
-                request.setDescription("Baixando Arquivo");
+                request.setDescription("Arquivo Baixado com sucesso");
 
 
                 request.setTitle(URLUtil.guessFileName(url, contentDisposition,
