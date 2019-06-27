@@ -74,19 +74,36 @@ public class MainActivity extends AppCompatActivity {
                         Environment.DIRECTORY_DOWNLOADS, URLUtil.guessFileName(
                                 url, contentDisposition, mimeType));
                 DownloadManager dm = (DownloadManager) getSystemService(DOWNLOAD_SERVICE);
-                dm.enqueue(request);
-                LayoutInflater inflater = getLayoutInflater();
-                View layout = inflater.inflate(R.layout.toast_custom,
-                        (ViewGroup) findViewById(R.id.custom_toast_container));
+                try{
+                    dm.enqueue(request);
+                    LayoutInflater inflater = getLayoutInflater();
+                    View layout = inflater.inflate(R.layout.toast_custom,
+                            (ViewGroup) findViewById(R.id.custom_toast_container));
 
-                TextView text = layout.findViewById(R.id.text);
-                text.setText("Baixando Arquivo");
+                    TextView text = layout.findViewById(R.id.text);
+                    text.setText("Baixando Arquivo");
 
-                Toast toast = new Toast(getApplicationContext());
-                toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
-                toast.setDuration(Toast.LENGTH_LONG);
-                toast.setView(layout);
-                toast.show();
+                    Toast toast = new Toast(getApplicationContext());
+                    toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+                    toast.setDuration(Toast.LENGTH_LONG);
+                    toast.setView(layout);
+                    toast.show();
+                }catch (Exception e){
+                    LayoutInflater inflater = getLayoutInflater();
+                    View layout = inflater.inflate(R.layout.toast_custom,
+                            (ViewGroup) findViewById(R.id.custom_toast_container));
+
+                    TextView text = layout.findViewById(R.id.text);
+                    text.setText("Por Favor libere a permissao para gravação neste Dispositivo");
+
+                    Toast toast = new Toast(getApplicationContext());
+                    toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+                    toast.setDuration(Toast.LENGTH_LONG);
+                    toast.setView(layout);
+                    toast.show();
+
+                }
+
 
             }});
     }
